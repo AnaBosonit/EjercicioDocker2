@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    ports:
+      - 8081:8081
+    depends_on:
+      - postgres
+    links:
+      - postgres:database
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: contrasena
+      POSTGRES_DB: test
